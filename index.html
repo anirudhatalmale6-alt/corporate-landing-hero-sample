@@ -6,375 +6,239 @@
 <title>bitago.com — Hero section</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#050708;
+  --accent:#33CBC7;
   --ink:#FFFFFF;
-  --muted:#AFB5BE;
-  --line:rgba(255,255,255,.10);
-  --card:rgba(255,255,255,.045);
-  --accent:#33CBC7;          /* sampled from the Sign up button in your PDF */
-  --accent-ink:#04231F;
-  --radius:20px;
-  --maxw:1200px;
+  --muted:#D3D7DC;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
 body{
-  background:var(--bg);
+  background:#000;
   color:var(--ink);
-  font-family:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-family:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
+a{text-decoration:none;color:inherit}
 
-/* ---------- ambient background ---------- */
-.hero{position:relative;isolation:isolate;padding:0 24px 60px;overflow:hidden}
-.hero::before,.hero::after{content:'';position:absolute;z-index:-2;pointer-events:none}
-.hero::before{
-  inset:-20% -10% auto -10%;height:125%;
-  background:
-    radial-gradient(58% 52% at 74% 26%, rgba(51,203,199,.20), transparent 62%),
-    radial-gradient(52% 48% at 16% 6%,  rgba(90,140,190,.14), transparent 64%),
-    radial-gradient(72% 58% at 62% 94%, rgba(190,170,140,.12), transparent 66%);
-  filter:blur(10px);
+/* --------------------------------------------------------------------------
+   DESKTOP: the section is a 1:1 scale of the mockup.
+   The design is 1610 x 792. --u is one design pixel, so every position and
+   type size below is the number measured off the PDF.
+   -------------------------------------------------------------------------- */
+.hero{
+  container-type:inline-size;
+  position:relative;
+  width:100%;
+  aspect-ratio:1610 / 792;
+  background:#050605 url('assets/hero-bg.jpg') center/cover no-repeat;
+  overflow:hidden;
 }
-.hero::after{
-  inset:0;
-  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
-  background-size:76px 76px;
-  mask-image:radial-gradient(75% 65% at 50% 30%,#000 30%,transparent 78%);
-  opacity:.40;
-}
-.grain{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.55;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/><feColorMatrix type='saturate' values='0'/></filter><rect width='140' height='140' filter='url(%23n)' opacity='.16'/></svg>");
-}
+.hero *{--u:calc(100cqw / 1610)}
 
-.wrap{max-width:var(--maxw);margin:0 auto;position:relative}
+.at{position:absolute}
 
-/* ---------- nav ---------- */
-.nav{display:flex;align-items:center;gap:28px;padding:24px 0 0}
-.brand{display:flex;align-items:center;gap:11px;font-weight:700;letter-spacing:-.022em;font-size:21px}
-.brand svg{display:block}
-.nav-right{margin-left:auto;display:flex;align-items:center;gap:12px}
-.login{color:#D5D9DF;text-decoration:none;font-size:14.5px;font-weight:600;transition:color .2s}
+/* ---- nav ---- */
+.brand{left:calc(39*var(--u));top:calc(15*var(--u));display:flex;align-items:center;gap:calc(14*var(--u))}
+.brand svg{width:calc(46*var(--u));height:calc(46*var(--u));display:block}
+.brand span{font-size:calc(24*var(--u));font-weight:600;letter-spacing:calc(-.3*var(--u))}
+
+.login{right:calc(239*var(--u));top:calc(30*var(--u));font-size:calc(14*var(--u));font-weight:400;color:#EDEFF1}
 .login:hover{color:#fff}
 
-.btn{
-  display:inline-flex;align-items:center;gap:9px;border:0;cursor:pointer;
-  font-family:inherit;font-weight:700;font-size:14.5px;text-decoration:none;
-  padding:11px 22px;border-radius:8px;transition:transform .18s,box-shadow .18s,background .18s;
-  white-space:nowrap;flex:none;
+.signup-nav{
+  right:calc(109*var(--u));top:calc(20*var(--u));
+  width:calc(105*var(--u));height:calc(39*var(--u));
+  border-radius:calc(6*var(--u));background:var(--accent);color:#0A2E2C;
+  display:flex;align-items:center;justify-content:center;
+  font-size:calc(17*var(--u));font-weight:600;
+  transition:filter .18s;
 }
-.btn-primary{background:var(--accent);color:#062522;box-shadow:0 8px 26px -12px rgba(51,203,199,.9)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 34px -12px rgba(51,203,199,1)}
-.btn-icon{
-  width:44px;height:44px;min-width:44px;padding:0;justify-content:center;border-radius:8px;
-  background:rgba(255,255,255,.06);border:1px solid var(--line);color:#fff;
-}
-.btn-icon:hover{background:rgba(255,255,255,.12)}
-.nav .btn-icon{width:38px;height:38px;min-width:38px;background:transparent;border:0}
-.burger{display:none}
-.nav-sep{width:1px;height:24px;background:var(--line);margin:0 2px}
+.signup-nav:hover{filter:brightness(1.08)}
 
-/* ---------- hero grid ---------- */
-.grid{
-  display:grid;grid-template-columns:1.14fr .86fr;gap:40px;align-items:center;
-  padding:74px 0 40px;
-}
+.divider{right:calc(84*var(--u));top:calc(19*var(--u));width:1px;height:calc(41*var(--u));background:rgba(255,255,255,.28)}
+.qr-nav{right:calc(24*var(--u));top:calc(20*var(--u));width:calc(40*var(--u));height:calc(40*var(--u));display:grid;place-items:center;color:#fff;opacity:.92}
+.qr-nav svg{width:calc(30*var(--u));height:calc(30*var(--u))}
+
+/* ---- headline block ---- */
 h1{
-  font-size:clamp(33px,3.6vw,45px);line-height:1.14;letter-spacing:-.028em;font-weight:700;
+  left:calc(170*var(--u));top:calc(172*var(--u));
+  font-size:calc(49*var(--u));line-height:calc(63*var(--u));
+  font-weight:400;letter-spacing:calc(-.4*var(--u));
 }
-.sub{margin-top:20px;color:var(--muted);font-size:17px;line-height:1.6;max-width:40ch}
-.cta-row{display:flex;align-items:center;gap:12px;margin-top:30px;flex-wrap:wrap}
-.cta-row .btn-primary{padding:15px 30px;font-size:16px}
+.sub{
+  left:calc(170*var(--u));top:calc(320*var(--u));
+  font-size:calc(21*var(--u));line-height:calc(30*var(--u));
+  font-weight:400;color:var(--muted);
+}
+
+.cta{
+  left:calc(170*var(--u));top:calc(420*var(--u));
+  width:calc(299*var(--u));height:calc(61*var(--u));
+  background:var(--accent);color:#0A2E2C;border-radius:calc(6*var(--u));
+  display:flex;align-items:center;
+  padding:0 calc(24*var(--u));font-size:calc(24*var(--u));font-weight:600;
+  transition:filter .18s,transform .18s;
+}
+.cta:hover{filter:brightness(1.08);transform:translateY(calc(-2*var(--u)))}
+.cta svg{width:calc(20*var(--u));height:calc(20*var(--u));margin-left:auto}
+
+.qr-cta{
+  left:calc(487*var(--u));top:calc(420*var(--u));
+  width:calc(61*var(--u));height:calc(61*var(--u));
+  border:1px solid rgba(255,255,255,.30);border-radius:calc(6*var(--u));
+  display:grid;place-items:center;color:#fff;background:rgba(255,255,255,.04);
+  transition:background .18s;
+}
+.qr-cta:hover{background:rgba(255,255,255,.12)}
+.qr-cta svg{width:calc(30*var(--u));height:calc(30*var(--u))}
 
 .promo{
-  margin-top:26px;
-  background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:6px;
-  padding:16px 18px;max-width:400px;backdrop-filter:blur(8px);
+  left:calc(168*var(--u));top:calc(498*var(--u));
+  width:calc(378*var(--u));
+  border:1px solid rgba(255,255,255,.20);border-radius:calc(4*var(--u));
+  padding:calc(12*var(--u)) calc(16*var(--u));
+  font-size:calc(12.6*var(--u));line-height:calc(19.5*var(--u));color:#D9DCE0;
 }
-.promo p{font-size:13.5px;line-height:1.6;color:#C3C8D0}
-.promo b{color:#fff;font-weight:700}
-.promo a{color:var(--accent);text-decoration:none;font-weight:700}
+.promo b{font-weight:600;color:#fff}
+.promo a{color:var(--accent);font-weight:500}
 .promo a:hover{text-decoration:underline}
 
-/* ---------- phone ---------- */
-.stage{position:relative;display:flex;justify-content:center;align-items:center;min-height:540px}
-.stage::before{
-  content:'';position:absolute;width:80%;aspect-ratio:1;border-radius:50%;
-  background:radial-gradient(circle,rgba(51,203,199,.20),transparent 62%);filter:blur(48px);
+/* ---- stats ---- */
+.stats{inset:0}
+.stats .s{position:absolute;top:calc(682*var(--u))}
+.stats .s:nth-child(1){left:calc(170*var(--u))}
+.stats .s:nth-child(2){left:calc(338*var(--u))}
+.stats .s:nth-child(3){left:calc(541*var(--u))}
+.stats .s span{display:block;font-size:calc(15*var(--u));font-weight:400;color:#E4E7EA;white-space:nowrap}
+.stats .s b{display:block;font-size:calc(15*var(--u));font-weight:600;margin-top:calc(7*var(--u));white-space:nowrap}
+
+.trust{
+  right:calc(166*var(--u));top:calc(699*var(--u));
+  display:flex;align-items:center;gap:calc(6*var(--u));
+  font-size:calc(12*var(--u));color:#E4E7EA;white-space:nowrap;
 }
-.phone{
-  position:relative;width:290px;border-radius:40px;padding:9px;
-  background:linear-gradient(160deg,#3A3F46,#111418 42%,#282C32);
-  box-shadow:0 46px 92px -26px rgba(0,0,0,.92),0 0 0 1px rgba(255,255,255,.09);
-  animation:float 7s ease-in-out infinite;
+.trust b{font-weight:600;color:#fff}
+.trust svg{width:calc(15*var(--u));height:calc(14*var(--u))}
+
+/* --------------------------------------------------------------------------
+   MOBILE / TABLET: the mockup has no small-screen design, so the same content
+   restacks. Photo moves under the copy.
+   -------------------------------------------------------------------------- */
+.m-phone{display:none}
+
+@media(max-width:900px){
+  .hero{
+    container-type:normal;
+    aspect-ratio:auto;
+    background:#07100F;
+    background-image:radial-gradient(70% 50% at 78% 4%, rgba(51,203,199,.13), transparent 62%),
+                     radial-gradient(80% 45% at 20% 96%, rgba(180,150,120,.14), transparent 66%);
+    padding:22px 20px 34px;
+  }
+  .hero *{--u:1px}
+  .at{position:static}
+  .hero-top{display:flex;align-items:center;gap:14px;margin-bottom:44px}
+  .brand{gap:10px}
+  .brand svg{width:32px;height:32px}
+  .brand span{font-size:21px}
+  .login{margin-left:auto;font-size:15px}
+  .signup-nav{width:auto;height:38px;padding:0 18px;border-radius:6px;font-size:15px}
+  .divider{display:none}
+  .qr-nav{width:34px;height:34px}
+  .qr-nav svg{width:24px;height:24px}
+
+  h1{font-size:34px;line-height:42px;letter-spacing:-.4px;max-width:15ch}
+  .brk{display:none}
+  .sub{margin-top:18px;font-size:16px;line-height:25px;max-width:40ch}
+  .cta-row{display:flex;align-items:center;gap:12px;margin-top:26px}
+  .cta{width:auto;height:54px;padding:0 24px;font-size:17px;gap:14px}
+  .cta svg{width:16px;height:16px;margin-left:0}
+  .qr-cta{width:54px;height:54px;flex:none}
+  .qr-cta svg{width:24px;height:24px}
+  .promo{margin-top:24px;width:100%;max-width:440px;padding:16px 18px;font-size:14px;line-height:21px;border-radius:6px}
+
+  .m-phone{
+    display:block;width:100%;max-width:460px;margin:34px auto 6px;
+    border-radius:14px;
+  }
+
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:20px 26px;margin-top:26px;inset:auto}
+  .stats .s{position:static}
+  .stats .s:nth-child(1),.stats .s:nth-child(2),.stats .s:nth-child(3){left:auto}
+  .stats .s span,.stats .s b{font-size:15px}
+  .trust{margin-top:22px;font-size:15px}
+  .trust svg{width:17px;height:16px}
 }
-@keyframes float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-16px) rotate(-2deg)}}
-
-/* ---------- light app screen (matches your mockup) ---------- */
-.screen{background:#F4F4F6;border-radius:32px;padding:14px 13px 0;overflow:hidden;position:relative;color:#101318}
-.st{display:flex;justify-content:space-between;align-items:center;font-size:9.5px;color:#3A3F47;font-weight:700;margin-bottom:11px}
-.st .r{display:flex;gap:3px;align-items:center}
-.apbar{display:flex;align-items:center;gap:7px;margin-bottom:10px}
-.apbar .av{width:17px;height:17px;border-radius:50%;background:#D8DAE0;flex:none}
-.apbar .ttl{display:flex;align-items:center;gap:4px;font-size:9.5px;font-weight:700;color:#1B1F26;margin:0 auto}
-.apbar .ic{width:15px;height:15px;border-radius:5px;background:#E4E6EB;flex:none}
-.srch{display:flex;align-items:center;gap:6px;background:#EAEBEF;border-radius:999px;padding:6px 10px;font-size:9px;color:#8B909A;font-weight:600;margin-bottom:13px}
-
-.balrow{display:flex;align-items:center;gap:5px;font-size:9px;color:#787E88;font-weight:700}
-.bal{font-size:27px;font-weight:800;letter-spacing:-.03em;margin-top:2px;color:#0B0E12}
-.cb{display:flex;align-items:center;gap:5px;font-size:8.5px;font-weight:700;margin-top:3px;color:#E0574B}
-.cb i{font-style:normal;color:#787E88}
-
-.acts{display:flex;justify-content:space-between;margin:13px 0 11px}
-.act{display:flex;flex-direction:column;align-items:center;gap:4px;width:23%}
-.act .cr{width:27px;height:27px;border-radius:50%;background:#1B1F26;display:grid;place-items:center;color:#fff}
-.act span{font-size:7.5px;font-weight:700;color:#3A3F47}
-
-.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
-.tile{background:#fff;border-radius:11px;padding:9px 7px;box-shadow:0 1px 2px rgba(16,19,24,.05)}
-.tile .cr{width:19px;height:19px;border-radius:50%;display:grid;place-items:center;margin-bottom:6px}
-.tile b{display:block;font-size:8px;font-weight:800;color:#141820;letter-spacing:-.01em}
-.tile span{display:block;font-size:6.8px;color:#868C96;font-weight:600;margin-top:2px;line-height:1.3}
-
-.allrow{display:flex;align-items:center;gap:6px;margin:13px 0 7px}
-.allrow b{font-size:9px;font-weight:800;color:#141820}
-.allrow em{font-style:normal;font-size:9px;font-weight:800;color:#33A9A6}
-.allrow .f{margin-left:auto;width:14px;height:14px;border-radius:4px;background:#E4E6EB}
-
-.arow{display:flex;align-items:center;gap:8px;padding:7px 0;border-top:1px solid #E6E7EB}
-.arow:first-of-type{border-top:0}
-.arow .ic{width:19px;height:19px;border-radius:50%;display:grid;place-items:center;font-size:8px;font-weight:800;color:#fff;flex:none}
-.arow .nm{font-size:8.5px;font-weight:800;color:#141820}
-.arow .nm i{display:block;font-style:normal;font-size:7px;color:#8B909A;font-weight:600;margin-top:1px}
-.arow .vl{margin-left:auto;text-align:right;font-size:8.5px;font-weight:800;color:#141820}
-.arow .vl i{display:block;font-style:normal;font-size:7px;color:#8B909A;font-weight:600;margin-top:1px}
-.arow .ch{color:#E0574B}
-.arow .cg{color:#22A06B}
-.arow .ar{color:#C6C9CF;font-size:10px;margin-left:5px}
-
-.tabbar{display:flex;justify-content:space-around;margin:9px -13px 0;padding:8px 0 11px;background:#EDEEF1;border-top:1px solid #E2E3E8}
-.tab{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:6.8px;font-weight:700;color:#9A9FA8}
-.tab.on{color:#5B4BD6}
-.tab .d{width:13px;height:13px;border-radius:4px;background:currentColor;opacity:.85}
-
-.badge{
-  position:absolute;background:rgba(14,16,20,.88);border:1px solid var(--line);
-  border-radius:14px;padding:12px 15px;backdrop-filter:blur(14px);
-  box-shadow:0 22px 48px -20px rgba(0,0,0,.95);
-}
-.badge span{display:block;font-size:10.5px;color:#8B909A;font-weight:600}
-.badge b{font-size:15px;font-weight:800;letter-spacing:-.02em}
-.badge b.up{color:var(--accent)}
-.badge-a{top:12%;left:1%;animation:float 7s ease-in-out .9s infinite}
-.badge-b{bottom:15%;right:0%;animation:float 7s ease-in-out 1.8s infinite}
-
-/* ---------- stats strip ---------- */
-.stats{display:flex;align-items:flex-end;gap:56px;flex-wrap:wrap;padding-top:20px}
-.stat span{display:block;font-size:14px;color:#C3C8D0;font-weight:500}
-.stat b{display:block;font-size:15px;font-weight:700;margin-top:5px;letter-spacing:-.01em}
-.tp{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:13px;color:#C3C8D0}
-.tp b{color:#fff;font-weight:700;font-size:13px}
-
-/* ---------- responsive ---------- */
-@media(max-width:980px){
-  .grid{grid-template-columns:1fr;gap:22px;padding:48px 0 34px}
-  h1{max-width:100%}
-  .sub{max-width:100%}
-  .login{display:none}
-  .burger{display:inline-flex}
-  .stage{min-height:auto;margin-top:12px}
-  .badge-a{left:0}.badge-b{right:0}
-  .stats{gap:34px}
-  .tp{margin-left:0;width:100%}
-}
-@media(max-width:560px){
-  .hero{padding:0 18px 46px}
-  .nav{gap:10px}
-  .nav-qr,.nav-sep{display:none}
-  .brand{font-size:18px}
-  .nav .btn-primary{padding:10px 16px;font-size:13.5px}
-  h1{font-size:34px}
-  .sub{font-size:16px}
-  .btn:not(.btn-icon){padding:13px 22px}
-  .cta-row .btn-primary{padding:14px 26px;font-size:15px}
-  .phone{width:258px}
-  .badge{display:none}
-  .stats{gap:22px 30px}
-  .stat span,.stat b{font-size:13.5px}
+@media(max-width:420px){
+  h1{font-size:29px;line-height:37px}
+  .hero-top{margin-bottom:34px}
+  .qr-nav{display:none}
 }
 </style>
 </head>
 <body>
 
 <section class="hero">
-  <div class="grain"></div>
-  <div class="wrap">
 
-    <!-- ================= NAV ================= -->
-    <nav class="nav">
-      <a class="brand" href="#" style="color:#fff;text-decoration:none">
-        <!-- placeholder mark, traced from your PDF — swap for your real logo file -->
-        <svg width="29" height="29" viewBox="0 0 29 29" fill="none" aria-hidden="true">
-          <path d="M5.2 5.6 12 2.4v18.2l-6.8 3.4V5.6Z" fill="#fff"/>
-          <path d="M13.4 5.4 25 14.1 13.4 22.8v-5.4l4.6-3.3-4.6-3.3V5.4Z" fill="#fff"/>
-        </svg>
-        bitago.com
-      </a>
-      <div class="nav-right">
-        <a class="login" href="#">Log in</a>
-        <a class="btn btn-primary" href="#">Sign up</a>
-        <span class="nav-sep"></span>
-        <button class="btn btn-icon nav-qr" aria-label="Get the app">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-            <path d="M2 2h5v5H2V2zm9 0h5v5h-5V2zM2 11h5v5H2v-5zm9 3h2v2h-2v-2zm3-3h2v2h-2v-2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <button class="btn btn-icon burger" aria-label="Menu">
-          <svg width="17" height="17" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-            <path d="M2 5h14M2 9h14M2 13h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-        </button>
-      </div>
-    </nav>
+  <div class="hero-top">
+    <a class="at brand" href="#">
+      <!-- placeholder mark traced from the PDF — swap for the real logo file -->
+      <svg viewBox="0 0 46 46" fill="none" aria-hidden="true">
+        <path d="M8.6 9.4 19 4.2v29L8.6 38.6V9.4Z" fill="#fff"/>
+        <path d="M21.4 8.6 40.6 23 21.4 37.4v-9l8.2-5.4-8.2-5.4v-8.8Z" fill="#fff"/>
+      </svg>
+      <span>bitago.com</span>
+    </a>
 
-    <!-- ================= HERO ================= -->
-    <div class="grid">
-      <div>
-        <h1>Spend. Earn. Grow your Crypto. All in one place.</h1>
-        <p class="sub">Open a free account in minutes right from your phone and make your crypto go further.</p>
-
-        <div class="cta-row">
-          <a class="btn btn-primary" href="#">Sign up
-            <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M3 11L11 3M11 3H4.5M11 3v6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-          <button class="btn btn-icon" aria-label="Scan to download the app">
-            <svg width="19" height="19" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-              <path d="M2 2h5v5H2V2zm9 0h5v5h-5V2zM2 11h5v5H2v-5zm9 3h2v2h-2v-2zm3-3h2v2h-2v-2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
-            </svg>
-          </button>
-        </div>
-
-        <div class="promo">
-          <p>Unlock <b>Bitago Premium</b> — get exclusive rewards, enhanced cashback, lower fees, and premium benefits from day one. <a href="#">Claim your Bitago Premium offer →</a></p>
-        </div>
-      </div>
-
-      <!-- ---------- phone ---------- -->
-      <div class="stage">
-        <div class="phone">
-          <div class="screen">
-
-            <div class="st">
-              <span>05:29</span>
-              <div class="r"><span>ıll</span><span>≋</span><span>▮</span></div>
-            </div>
-
-            <div class="apbar">
-              <div class="av"></div>
-              <div class="ttl">
-                <svg width="9" height="9" viewBox="0 0 27 27" aria-hidden="true"><path d="M8.4 6.2v14.6l4.2-3.4V9.6l4.6 3.7-4.6 3.7 5.9 4.1V9.4L8.4 6.2z" fill="#101318"/></svg>
-                Bitago Wallet
-              </div>
-              <div class="ic"></div>
-              <div class="ic"></div>
-            </div>
-
-            <div class="srch">
-              <svg width="9" height="9" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="5" cy="5" r="3.4" stroke="#9A9FA8" stroke-width="1.3"/><path d="M7.6 7.6L10 10" stroke="#9A9FA8" stroke-width="1.3" stroke-linecap="round"/></svg>
-              Search the app
-            </div>
-
-            <div class="balrow">Balance
-              <svg width="9" height="9" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6s1.9-3 5-3 5 3 5 3-1.9 3-5 3-5-3-5-3z" stroke="#787E88" stroke-width="1.1"/><circle cx="6" cy="6" r="1.3" fill="#787E88"/></svg>
-            </div>
-            <div class="bal">$0.00</div>
-            <div class="cb">+$0.00 (0.00%) <i>Cashback ⌄</i></div>
-
-            <div class="acts">
-              <div class="act">
-                <div class="cr"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 2v8M6 10L3 7M6 10l3-3" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                <span>Deposit</span>
-              </div>
-              <div class="act">
-                <div class="cr"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 10V2M6 2L3 5M6 2l3 3" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                <span>Withdraw</span>
-              </div>
-              <div class="act">
-                <div class="cr"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M10 2L2 5.6l3.2 1.2L6.4 10 10 2z" stroke="#fff" stroke-width="1.2" stroke-linejoin="round"/></svg></div>
-                <span>Send</span>
-              </div>
-              <div class="act">
-                <div class="cr"><svg width="11" height="11" viewBox="0 0 12 12" aria-hidden="true"><g fill="#fff"><circle cx="3" cy="6" r="1"/><circle cx="6" cy="6" r="1"/><circle cx="9" cy="6" r="1"/></g></svg></div>
-                <span>More</span>
-              </div>
-            </div>
-
-            <div class="tiles">
-              <div class="tile">
-                <div class="cr" style="background:#FDEBD8"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="1.4" y="3" width="9.2" height="6" rx="1.4" stroke="#E08A3C" stroke-width="1.2"/><path d="M1.4 5.2h9.2" stroke="#E08A3C" stroke-width="1.2"/></svg></div>
-                <b>Card</b><span>Instant approval</span>
-              </div>
-              <div class="tile">
-                <div class="cr" style="background:#D9F2E4"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 8.6l2.6-2.8 2 1.8L10 3.4" stroke="#22A06B" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                <b>Earn</b><span>Up to 30% APY</span>
-              </div>
-              <div class="tile">
-                <div class="cr" style="background:#DEE6FB"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="1.6" y="2" width="8.8" height="8" rx="1.4" stroke="#4B6BD6" stroke-width="1.2"/><path d="M4 6h4M6 4v4" stroke="#4B6BD6" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-                <b>Funding</b><span>Up to 10k USDT</span>
-              </div>
-            </div>
-
-            <div class="allrow"><b>All Assets</b><em>$0.00</em><span class="f"></span></div>
-
-            <div class="arow">
-              <div class="ic" style="background:#26A17B">₮</div>
-              <div class="nm">USDT<i>$1.00 &nbsp;0.00%</i></div>
-              <div class="vl">0.00<i>$0.00</i></div><span class="ar">›</span>
-            </div>
-            <div class="arow">
-              <div class="ic" style="background:#2775CA">$</div>
-              <div class="nm">USDC<i>$1.00 &nbsp;<span class="ch">-0.35%</span></i></div>
-              <div class="vl">0.00<i>$0.00</i></div><span class="ar">›</span>
-            </div>
-            <div class="arow">
-              <div class="ic" style="background:#111418">X</div>
-              <div class="nm">XBIT<i>$9.218 &nbsp;<span class="cg">+0.00%</span></i></div>
-              <div class="vl">0.00<i>$0.00</i></div><span class="ar">›</span>
-            </div>
-
-            <div class="tabbar">
-              <div class="tab on"><span class="d"></span>Asset</div>
-              <div class="tab"><span class="d"></span>Cards</div>
-              <div class="tab"><span class="d"></span>Profile</div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- ================= STATS STRIP ================= -->
-    <div class="stats">
-      <div class="stat"><span>Operating</span><b>since 2018</b></div>
-      <div class="stat"><span>Personalized</span><b>client care 24/7</b></div>
-      <div class="stat"><span>Trusted by</span><b>15,000 people</b></div>
-      <div class="tp">
-        <b>Excellent</b> 4.4 out of 5
-        <svg width="16" height="15" viewBox="0 0 16 15" aria-hidden="true">
-          <path d="M8 0l2 4.9 5.3.4-4 3.5 1.2 5.2L8 11.2 3.5 14l1.2-5.2-4-3.5 5.3-.4L8 0z" fill="#00B67A"/>
-        </svg>
-        <b>Trustpilot</b>
-      </div>
-    </div>
-
+    <a class="at login" href="#">Log in</a>
+    <a class="at signup-nav" href="#">Sign up</a>
+    <span class="at divider"></span>
+    <a class="at qr-nav" href="#" aria-label="Get the app">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M3 3h7v7H3V3Zm11 0h7v7h-7V3ZM3 14h7v7H3v-7Zm11 4h3v3h-3v-3Zm4-4h3v3h-3v-3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      </svg>
+    </a>
   </div>
+
+  <h1 class="at">Spend. Earn. Grow<br>your Crypto. All in one place.</h1>
+
+  <p class="at sub">Open a free account in minutes right from your<br class="brk"> phone and make your crypto go further.</p>
+
+  <div class="cta-row">
+    <a class="at cta" href="#">Sign up
+      <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M4.5 15.5 15.5 4.5M15.5 4.5H7m8.5 0V13" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <a class="at qr-cta" href="#" aria-label="Scan to download the app">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M3 3h7v7H3V3Zm11 0h7v7h-7V3ZM3 14h7v7H3v-7Zm11 4h3v3h-3v-3Zm4-4h3v3h-3v-3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="at promo">
+    Unlock <b>Bitago Premium</b> — get exclusive rewards, enhanced cashback, lower fees, and premium
+    benefits from day one. <a href="#">Claim your Bitago Premium offer →</a>
+  </div>
+
+  <img class="m-phone" src="assets/hero-phone.jpg" alt="The Bitago wallet app on a phone">
+
+  <div class="at stats">
+    <div class="s"><span>Operating</span><b>since 2018</b></div>
+    <div class="s"><span>Personalized</span><b>client care 24/7</b></div>
+    <div class="s"><span>Trusted by</span><b>15,000 people</b></div>
+  </div>
+
+  <div class="at trust">
+    <b>Excellent</b> 4.4 out of 5
+    <svg viewBox="0 0 22 21" aria-hidden="true"><path d="M11 0l2.7 6.7 7.3.5-5.6 4.8L17.1 21 11 17.1 4.9 21l1.7-9L1 7.2l7.3-.5L11 0z" fill="#00B67A"/></svg>
+    <b>Trustpilot</b>
+  </div>
+
 </section>
 
 </body>
