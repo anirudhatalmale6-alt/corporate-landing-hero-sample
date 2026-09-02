@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vaultline — Hero section sample</title>
+<title>bitago.com — Hero section</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#07080B;
+  --bg:#050708;
   --ink:#FFFFFF;
-  --muted:#9BA1AD;
+  --muted:#AFB5BE;
   --line:rgba(255,255,255,.10);
   --card:rgba(255,255,255,.045);
-  --accent:#2ED3B7;
+  --accent:#33CBC7;          /* sampled from the Sign up button in your PDF */
   --accent-ink:#04231F;
   --radius:20px;
   --maxw:1200px;
@@ -30,14 +30,14 @@ body{
 }
 
 /* ---------- ambient background ---------- */
-.hero{position:relative;isolation:isolate;padding:0 24px 72px;overflow:hidden}
+.hero{position:relative;isolation:isolate;padding:0 24px 60px;overflow:hidden}
 .hero::before,.hero::after{content:'';position:absolute;z-index:-2;pointer-events:none}
 .hero::before{
-  inset:-20% -10% auto -10%;height:120%;
+  inset:-20% -10% auto -10%;height:125%;
   background:
-    radial-gradient(60% 55% at 78% 22%, rgba(46,211,183,.20), transparent 60%),
-    radial-gradient(55% 50% at 18% 8%,  rgba(96,120,255,.18), transparent 62%),
-    radial-gradient(70% 60% at 60% 92%, rgba(255,168,92,.13), transparent 65%);
+    radial-gradient(58% 52% at 74% 26%, rgba(51,203,199,.20), transparent 62%),
+    radial-gradient(52% 48% at 16% 6%,  rgba(90,140,190,.14), transparent 64%),
+    radial-gradient(72% 58% at 62% 94%, rgba(190,170,140,.12), transparent 66%);
   filter:blur(10px);
 }
 .hero::after{
@@ -45,7 +45,7 @@ body{
   background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
   background-size:76px 76px;
   mask-image:radial-gradient(75% 65% at 50% 30%,#000 30%,transparent 78%);
-  opacity:.45;
+  opacity:.40;
 }
 .grain{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.55;
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/><feColorMatrix type='saturate' values='0'/></filter><rect width='140' height='140' filter='url(%23n)' opacity='.16'/></svg>");
@@ -54,154 +54,157 @@ body{
 .wrap{max-width:var(--maxw);margin:0 auto;position:relative}
 
 /* ---------- nav ---------- */
-.nav{display:flex;align-items:center;gap:28px;padding:26px 0 0}
-.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em;font-size:19px}
+.nav{display:flex;align-items:center;gap:28px;padding:24px 0 0}
+.brand{display:flex;align-items:center;gap:11px;font-weight:700;letter-spacing:-.022em;font-size:21px}
 .brand svg{display:block}
-.nav-links{display:flex;gap:26px;margin-left:14px}
-.nav-links a{color:#C8CCD4;text-decoration:none;font-size:14.5px;font-weight:500;transition:color .2s}
-.nav-links a:hover{color:#fff}
 .nav-right{margin-left:auto;display:flex;align-items:center;gap:12px}
-.login{color:#C8CCD4;text-decoration:none;font-size:14.5px;font-weight:600;transition:color .2s}
+.login{color:#D5D9DF;text-decoration:none;font-size:14.5px;font-weight:600;transition:color .2s}
 .login:hover{color:#fff}
 
 .btn{
   display:inline-flex;align-items:center;gap:9px;border:0;cursor:pointer;
   font-family:inherit;font-weight:700;font-size:14.5px;text-decoration:none;
-  padding:11px 20px;border-radius:999px;transition:transform .18s,box-shadow .18s,background .18s;
+  padding:11px 22px;border-radius:8px;transition:transform .18s,box-shadow .18s,background .18s;
   white-space:nowrap;flex:none;
 }
-.btn-primary{background:var(--accent);color:var(--accent-ink);box-shadow:0 8px 26px -10px rgba(46,211,183,.85)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 34px -10px rgba(46,211,183,.95)}
+.btn-primary{background:var(--accent);color:#062522;box-shadow:0 8px 26px -12px rgba(51,203,199,.9)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 34px -12px rgba(51,203,199,1)}
 .btn-icon{
-  width:42px;height:42px;min-width:42px;padding:0;justify-content:center;border-radius:12px;
+  width:44px;height:44px;min-width:44px;padding:0;justify-content:center;border-radius:8px;
   background:rgba(255,255,255,.06);border:1px solid var(--line);color:#fff;
 }
 .btn-icon:hover{background:rgba(255,255,255,.12)}
+.nav .btn-icon{width:38px;height:38px;min-width:38px;background:transparent;border:0}
 .burger{display:none}
+.nav-sep{width:1px;height:24px;background:var(--line);margin:0 2px}
 
 /* ---------- hero grid ---------- */
 .grid{
-  display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;
-  padding:88px 0 64px;
+  display:grid;grid-template-columns:1.14fr .86fr;gap:40px;align-items:center;
+  padding:74px 0 40px;
 }
 h1{
-  font-size:clamp(38px,5.1vw,64px);line-height:1.04;letter-spacing:-.035em;font-weight:800;
-  max-width:12ch;
+  font-size:clamp(33px,3.6vw,45px);line-height:1.14;letter-spacing:-.028em;font-weight:700;
 }
-h1 .grad{
-  background:linear-gradient(96deg,var(--accent) 8%,#8FA8FF 94%);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
-.sub{margin-top:22px;color:var(--muted);font-size:17.5px;line-height:1.62;max-width:44ch}
-.cta-row{display:flex;align-items:center;gap:12px;margin-top:34px;flex-wrap:wrap}
+.sub{margin-top:20px;color:var(--muted);font-size:17px;line-height:1.6;max-width:40ch}
+.cta-row{display:flex;align-items:center;gap:12px;margin-top:30px;flex-wrap:wrap}
+.cta-row .btn-primary{padding:15px 30px;font-size:16px}
 
 .promo{
-  margin-top:30px;display:flex;align-items:center;gap:14px;
-  background:var(--card);border:1px solid var(--line);border-radius:14px;
-  padding:14px 18px;max-width:470px;backdrop-filter:blur(8px);
+  margin-top:26px;
+  background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:6px;
+  padding:16px 18px;max-width:400px;backdrop-filter:blur(8px);
 }
-.promo .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none;box-shadow:0 0 0 4px rgba(46,211,183,.16)}
-.promo p{font-size:13.5px;line-height:1.55;color:#B9BFC9}
+.promo p{font-size:13.5px;line-height:1.6;color:#C3C8D0}
 .promo b{color:#fff;font-weight:700}
-.promo a{color:var(--accent);text-decoration:none;font-weight:700;white-space:nowrap}
+.promo a{color:var(--accent);text-decoration:none;font-weight:700}
 .promo a:hover{text-decoration:underline}
 
 /* ---------- phone ---------- */
-.stage{position:relative;display:flex;justify-content:center;align-items:center;min-height:520px}
+.stage{position:relative;display:flex;justify-content:center;align-items:center;min-height:540px}
 .stage::before{
-  content:'';position:absolute;width:78%;aspect-ratio:1;border-radius:50%;
-  background:radial-gradient(circle,rgba(46,211,183,.24),transparent 62%);filter:blur(46px);
+  content:'';position:absolute;width:80%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,rgba(51,203,199,.20),transparent 62%);filter:blur(48px);
 }
 .phone{
-  position:relative;width:298px;border-radius:42px;padding:11px;
-  background:linear-gradient(160deg,#33383F,#0D0F13 42%,#25292F);
-  box-shadow:0 44px 90px -26px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.09);
+  position:relative;width:290px;border-radius:40px;padding:9px;
+  background:linear-gradient(160deg,#3A3F46,#111418 42%,#282C32);
+  box-shadow:0 46px 92px -26px rgba(0,0,0,.92),0 0 0 1px rgba(255,255,255,.09);
   animation:float 7s ease-in-out infinite;
 }
-@keyframes float{0%,100%{transform:translateY(0) rotate(-1.2deg)}50%{transform:translateY(-16px) rotate(-1.2deg)}}
-.screen{background:#0A0C10;border-radius:32px;padding:20px 17px;overflow:hidden;position:relative}
-.notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:88px;height:22px;border-radius:999px;background:#000}
-.status{display:flex;justify-content:space-between;font-size:11px;color:#8B909A;font-weight:600;margin-bottom:26px}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-16px) rotate(-2deg)}}
 
-.bal-label{font-size:11.5px;color:#7C828D;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
-.bal{font-size:30px;font-weight:800;letter-spacing:-.03em;margin-top:5px}
-.bal small{font-size:17px;color:#6E747E;font-weight:700}
-.chip{
-  display:inline-flex;align-items:center;gap:6px;margin-top:12px;
-  background:rgba(255,255,255,.07);border:1px solid var(--line);
-  padding:5px 11px;border-radius:999px;font-size:11.5px;font-weight:600;color:#D3D7DE;
-}
-.spark{width:100%;height:62px;margin:16px 0 14px;display:block}
+/* ---------- light app screen (matches your mockup) ---------- */
+.screen{background:#F4F4F6;border-radius:32px;padding:14px 13px 0;overflow:hidden;position:relative;color:#101318}
+.st{display:flex;justify-content:space-between;align-items:center;font-size:9.5px;color:#3A3F47;font-weight:700;margin-bottom:11px}
+.st .r{display:flex;gap:3px;align-items:center}
+.apbar{display:flex;align-items:center;gap:7px;margin-bottom:10px}
+.apbar .av{width:17px;height:17px;border-radius:50%;background:#D8DAE0;flex:none}
+.apbar .ttl{display:flex;align-items:center;gap:4px;font-size:9.5px;font-weight:700;color:#1B1F26;margin:0 auto}
+.apbar .ic{width:15px;height:15px;border-radius:5px;background:#E4E6EB;flex:none}
+.srch{display:flex;align-items:center;gap:6px;background:#EAEBEF;border-radius:999px;padding:6px 10px;font-size:9px;color:#8B909A;font-weight:600;margin-bottom:13px}
 
-.mini-row{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.mini{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:14px;padding:11px 12px}
-.mini span{font-size:10.5px;color:#7C828D;font-weight:600}
-.mini b{display:block;font-size:14px;margin-top:3px;letter-spacing:-.01em}
-.mini b.up{color:var(--accent)}
+.balrow{display:flex;align-items:center;gap:5px;font-size:9px;color:#787E88;font-weight:700}
+.bal{font-size:27px;font-weight:800;letter-spacing:-.03em;margin-top:2px;color:#0B0E12}
+.cb{display:flex;align-items:center;gap:5px;font-size:8.5px;font-weight:700;margin-top:3px;color:#E0574B}
+.cb i{font-style:normal;color:#787E88}
 
-.watch{margin-top:16px}
-.watch-head{display:flex;justify-content:space-between;font-size:11.5px;color:#7C828D;font-weight:700;margin-bottom:10px}
-.asset{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid rgba(255,255,255,.06)}
-.asset .ic{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:10.5px;font-weight:800;flex:none;color:#08090C}
-.asset .nm{font-size:12.5px;font-weight:700}
-.asset .nm i{display:block;font-style:normal;font-size:10.5px;color:#7C828D;font-weight:600;margin-top:1px}
-.asset .val{margin-left:auto;text-align:right;font-size:12.5px;font-weight:700}
-.asset .val i{display:block;font-style:normal;font-size:10.5px;font-weight:700;margin-top:1px}
-.up{color:var(--accent)}.down{color:#FF7A6B}
+.acts{display:flex;justify-content:space-between;margin:13px 0 11px}
+.act{display:flex;flex-direction:column;align-items:center;gap:4px;width:23%}
+.act .cr{width:27px;height:27px;border-radius:50%;background:#1B1F26;display:grid;place-items:center;color:#fff}
+.act span{font-size:7.5px;font-weight:700;color:#3A3F47}
 
-.tabs{display:flex;justify-content:space-between;margin-top:18px;padding-top:13px;border-top:1px solid rgba(255,255,255,.06)}
-.tabs div{width:22px;height:4px;border-radius:999px;background:rgba(255,255,255,.14)}
-.tabs div:first-child{background:var(--accent);width:26px}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.tile{background:#fff;border-radius:11px;padding:9px 7px;box-shadow:0 1px 2px rgba(16,19,24,.05)}
+.tile .cr{width:19px;height:19px;border-radius:50%;display:grid;place-items:center;margin-bottom:6px}
+.tile b{display:block;font-size:8px;font-weight:800;color:#141820;letter-spacing:-.01em}
+.tile span{display:block;font-size:6.8px;color:#868C96;font-weight:600;margin-top:2px;line-height:1.3}
+
+.allrow{display:flex;align-items:center;gap:6px;margin:13px 0 7px}
+.allrow b{font-size:9px;font-weight:800;color:#141820}
+.allrow em{font-style:normal;font-size:9px;font-weight:800;color:#33A9A6}
+.allrow .f{margin-left:auto;width:14px;height:14px;border-radius:4px;background:#E4E6EB}
+
+.arow{display:flex;align-items:center;gap:8px;padding:7px 0;border-top:1px solid #E6E7EB}
+.arow:first-of-type{border-top:0}
+.arow .ic{width:19px;height:19px;border-radius:50%;display:grid;place-items:center;font-size:8px;font-weight:800;color:#fff;flex:none}
+.arow .nm{font-size:8.5px;font-weight:800;color:#141820}
+.arow .nm i{display:block;font-style:normal;font-size:7px;color:#8B909A;font-weight:600;margin-top:1px}
+.arow .vl{margin-left:auto;text-align:right;font-size:8.5px;font-weight:800;color:#141820}
+.arow .vl i{display:block;font-style:normal;font-size:7px;color:#8B909A;font-weight:600;margin-top:1px}
+.arow .ch{color:#E0574B}
+.arow .cg{color:#22A06B}
+.arow .ar{color:#C6C9CF;font-size:10px;margin-left:5px}
+
+.tabbar{display:flex;justify-content:space-around;margin:9px -13px 0;padding:8px 0 11px;background:#EDEEF1;border-top:1px solid #E2E3E8}
+.tab{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:6.8px;font-weight:700;color:#9A9FA8}
+.tab.on{color:#5B4BD6}
+.tab .d{width:13px;height:13px;border-radius:4px;background:currentColor;opacity:.85}
 
 .badge{
-  position:absolute;background:rgba(16,18,23,.86);border:1px solid var(--line);
-  border-radius:16px;padding:12px 15px;backdrop-filter:blur(14px);
+  position:absolute;background:rgba(14,16,20,.88);border:1px solid var(--line);
+  border-radius:14px;padding:12px 15px;backdrop-filter:blur(14px);
   box-shadow:0 22px 48px -20px rgba(0,0,0,.95);
 }
 .badge span{display:block;font-size:10.5px;color:#8B909A;font-weight:600}
 .badge b{font-size:15px;font-weight:800;letter-spacing:-.02em}
-.badge-a{top:14%;left:2%;animation:float 7s ease-in-out .9s infinite}
-.badge-b{bottom:16%;right:1%;animation:float 7s ease-in-out 1.8s infinite}
+.badge b.up{color:var(--accent)}
+.badge-a{top:12%;left:1%;animation:float 7s ease-in-out .9s infinite}
+.badge-b{bottom:15%;right:0%;animation:float 7s ease-in-out 1.8s infinite}
 
-/* ---------- stats ---------- */
-.stats{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
-  background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
-}
-.stat{background:#0A0C10;padding:24px 26px}
-.stat span{font-size:12.5px;color:#7C828D;font-weight:600;letter-spacing:.02em}
-.stat b{display:block;font-size:19px;font-weight:800;letter-spacing:-.025em;margin-top:7px}
-.stat .stars{display:flex;align-items:center;gap:5px;margin-top:7px}
-.stat .stars b{margin:0;font-size:19px}
+/* ---------- stats strip ---------- */
+.stats{display:flex;align-items:flex-end;gap:56px;flex-wrap:wrap;padding-top:20px}
+.stat span{display:block;font-size:14px;color:#C3C8D0;font-weight:500}
+.stat b{display:block;font-size:15px;font-weight:700;margin-top:5px;letter-spacing:-.01em}
+.tp{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:13px;color:#C3C8D0}
+.tp b{color:#fff;font-weight:700;font-size:13px}
 
 /* ---------- responsive ---------- */
 @media(max-width:980px){
-  .grid{grid-template-columns:1fr;gap:24px;padding:56px 0 48px;text-align:left}
+  .grid{grid-template-columns:1fr;gap:22px;padding:48px 0 34px}
   h1{max-width:100%}
   .sub{max-width:100%}
-  .nav-links{display:none}
   .login{display:none}
   .burger{display:inline-flex}
-  .stage{min-height:auto;margin-top:16px}
+  .stage{min-height:auto;margin-top:12px}
   .badge-a{left:0}.badge-b{right:0}
-  .stats{grid-template-columns:repeat(2,1fr)}
+  .stats{gap:34px}
+  .tp{margin-left:0;width:100%}
 }
 @media(max-width:560px){
-  .hero{padding:0 18px 52px}
-  .nav{gap:12px}
-  .nav-qr{display:none}
-  .brand{font-size:17px}
+  .hero{padding:0 18px 46px}
+  .nav{gap:10px}
+  .nav-qr,.nav-sep{display:none}
+  .brand{font-size:18px}
   .nav .btn-primary{padding:10px 16px;font-size:13.5px}
-  h1{font-size:36px}
+  h1{font-size:34px}
   .sub{font-size:16px}
-  .btn:not(.btn-icon){padding:12px 20px}
-  .promo{flex-direction:row;align-items:flex-start}
-  .phone{width:262px}
-  .mini b{font-size:12.5px}
-  .mini span{font-size:10px}
+  .btn:not(.btn-icon){padding:13px 22px}
+  .cta-row .btn-primary{padding:14px 26px;font-size:15px}
+  .phone{width:258px}
   .badge{display:none}
-  .stats{grid-template-columns:1fr}
-  .stat{padding:20px}
+  .stats{gap:22px 30px}
+  .stat span,.stat b{font-size:13.5px}
 }
 </style>
 </head>
@@ -214,28 +217,20 @@ h1 .grad{
     <!-- ================= NAV ================= -->
     <nav class="nav">
       <a class="brand" href="#" style="color:#fff;text-decoration:none">
-        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
-          <rect width="26" height="26" rx="8" fill="#2ED3B7"/>
-          <path d="M7 18V8l6 6 6-6v10" stroke="#04231F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- placeholder mark, traced from your PDF — swap for your real logo file -->
+        <svg width="29" height="29" viewBox="0 0 29 29" fill="none" aria-hidden="true">
+          <path d="M5.2 5.6 12 2.4v18.2l-6.8 3.4V5.6Z" fill="#fff"/>
+          <path d="M13.4 5.4 25 14.1 13.4 22.8v-5.4l4.6-3.3-4.6-3.3V5.4Z" fill="#fff"/>
         </svg>
-        Vaultline
+        bitago.com
       </a>
-      <div class="nav-links">
-        <a href="#">Personal</a>
-        <a href="#">Business</a>
-        <a href="#">Markets</a>
-        <a href="#">Company</a>
-      </div>
       <div class="nav-right">
         <a class="login" href="#">Log in</a>
-        <a class="btn btn-primary" href="#">Sign up
-          <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M3 11L11 3M11 3H4.5M11 3v6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
+        <a class="btn btn-primary" href="#">Sign up</a>
+        <span class="nav-sep"></span>
         <button class="btn btn-icon nav-qr" aria-label="Get the app">
-          <svg width="17" height="17" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-            <path d="M2 2h5v5H2V2zm9 0h5v5h-5V2zM2 11h5v5H2v-5zm9 3h2v2h-2v-2zm3-3h2v2h-2v-2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M2 2h5v5H2V2zm9 0h5v5h-5V2zM2 11h5v5H2v-5zm9 3h2v2h-2v-2zm3-3h2v2h-2v-2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
           </svg>
         </button>
         <button class="btn btn-icon burger" aria-label="Menu">
@@ -249,8 +244,8 @@ h1 .grad{
     <!-- ================= HERO ================= -->
     <div class="grid">
       <div>
-        <h1>Earn, borrow, and spend <span class="grad">crypto.</span> All in one place.</h1>
-        <p class="sub">Access the premier wealth platform built to grow your crypto — hold, send, spend and earn from a single account, without giving up ownership.</p>
+        <h1>Spend. Earn. Grow your Crypto. All in one place.</h1>
+        <p class="sub">Open a free account in minutes right from your phone and make your crypto go further.</p>
 
         <div class="cta-row">
           <a class="btn btn-primary" href="#">Sign up
@@ -258,116 +253,124 @@ h1 .grad{
               <path d="M3 11L11 3M11 3H4.5M11 3v6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </a>
-          <button class="btn btn-icon" aria-label="Scan to download">
-            <svg width="17" height="17" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-              <path d="M2 2h5v5H2V2zm9 0h5v5h-5V2zM2 11h5v5H2v-5zm9 3h2v2h-2v-2zm3-3h2v2h-2v-2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <button class="btn btn-icon" aria-label="Scan to download the app">
+            <svg width="19" height="19" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M2 2h5v5H2V2zm9 0h5v5h-5V2zM2 11h5v5H2v-5zm9 3h2v2h-2v-2zm3-3h2v2h-2v-2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
             </svg>
           </button>
         </div>
 
         <div class="promo">
-          <span class="dot"></span>
-          <p>Get <b>Platinum tier</b> on arrival — our best yields and lowest borrowing rates for 30 days. <a href="#">Claim offer →</a></p>
+          <p>Unlock <b>Bitago Premium</b> — get exclusive rewards, enhanced cashback, lower fees, and premium benefits from day one. <a href="#">Claim your Bitago Premium offer →</a></p>
         </div>
       </div>
 
       <!-- ---------- phone ---------- -->
       <div class="stage">
-        <div class="badge badge-a">
-          <span>Earning today</span>
-          <b class="up">+$182.40</b>
-        </div>
-
         <div class="phone">
           <div class="screen">
-            <div class="notch"></div>
-            <div class="status"><span>9:41</span><span>5G</span></div>
 
-            <div class="bal-label">Total balance</div>
-            <div class="bal">$520,350<small>.75</small></div>
-            <div class="chip">
-              <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                <path d="M2 4h8v5H2V4zm0 0V3h6" stroke="#2ED3B7" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Wallet
-              <span style="color:#6E747E">›</span>
+            <div class="st">
+              <span>05:29</span>
+              <div class="r"><span>ıll</span><span>≋</span><span>▮</span></div>
             </div>
 
-            <svg class="spark" viewBox="0 0 260 62" preserveAspectRatio="none" aria-hidden="true">
-              <defs>
-                <linearGradient id="fill" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0" stop-color="#2ED3B7" stop-opacity=".34"/>
-                  <stop offset="1" stop-color="#2ED3B7" stop-opacity="0"/>
-                </linearGradient>
-              </defs>
-              <path d="M0 47 L26 41 L52 45 L78 30 L104 35 L130 21 L156 26 L182 14 L208 19 L234 8 L260 12 L260 62 L0 62 Z" fill="url(#fill)"/>
-              <path d="M0 47 L26 41 L52 45 L78 30 L104 35 L130 21 L156 26 L182 14 L208 19 L234 8 L260 12"
-                    fill="none" stroke="#2ED3B7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="260" cy="12" r="3.4" fill="#2ED3B7"/>
-            </svg>
-
-            <div class="mini-row">
-              <div class="mini"><span>Credit Hub</span><b>$220,550.75</b></div>
-              <div class="mini"><span>Savings Hub</span><b class="up">$30,800.50</b></div>
+            <div class="apbar">
+              <div class="av"></div>
+              <div class="ttl">
+                <svg width="9" height="9" viewBox="0 0 27 27" aria-hidden="true"><path d="M8.4 6.2v14.6l4.2-3.4V9.6l4.6 3.7-4.6 3.7 5.9 4.1V9.4L8.4 6.2z" fill="#101318"/></svg>
+                Bitago Wallet
+              </div>
+              <div class="ic"></div>
+              <div class="ic"></div>
             </div>
 
-            <div class="watch">
-              <div class="watch-head"><span>Watchlist</span><span>Manage ›</span></div>
+            <div class="srch">
+              <svg width="9" height="9" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="5" cy="5" r="3.4" stroke="#9A9FA8" stroke-width="1.3"/><path d="M7.6 7.6L10 10" stroke="#9A9FA8" stroke-width="1.3" stroke-linecap="round"/></svg>
+              Search the app
+            </div>
 
-              <div class="asset">
-                <div class="ic" style="background:#F7931A">B</div>
-                <div class="nm">Bitcoin<i>BTC</i></div>
-                <div class="val">$24,500.50<i class="up">+1.65%</i></div>
+            <div class="balrow">Balance
+              <svg width="9" height="9" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6s1.9-3 5-3 5 3 5 3-1.9 3-5 3-5-3-5-3z" stroke="#787E88" stroke-width="1.1"/><circle cx="6" cy="6" r="1.3" fill="#787E88"/></svg>
+            </div>
+            <div class="bal">$0.00</div>
+            <div class="cb">+$0.00 (0.00%) <i>Cashback ⌄</i></div>
+
+            <div class="acts">
+              <div class="act">
+                <div class="cr"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 2v8M6 10L3 7M6 10l3-3" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <span>Deposit</span>
               </div>
-
-              <div class="asset">
-                <div class="ic" style="background:#8FA8FF">E</div>
-                <div class="nm">Ethereum<i>ETH</i></div>
-                <div class="val">$3,180.10<i class="up">+2.41%</i></div>
+              <div class="act">
+                <div class="cr"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 10V2M6 2L3 5M6 2l3 3" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <span>Withdraw</span>
               </div>
-
-              <div class="asset">
-                <div class="ic" style="background:#2ED3B7">S</div>
-                <div class="nm">Solana<i>SOL</i></div>
-                <div class="val">$146.28<i class="down">-0.84%</i></div>
+              <div class="act">
+                <div class="cr"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M10 2L2 5.6l3.2 1.2L6.4 10 10 2z" stroke="#fff" stroke-width="1.2" stroke-linejoin="round"/></svg></div>
+                <span>Send</span>
+              </div>
+              <div class="act">
+                <div class="cr"><svg width="11" height="11" viewBox="0 0 12 12" aria-hidden="true"><g fill="#fff"><circle cx="3" cy="6" r="1"/><circle cx="6" cy="6" r="1"/><circle cx="9" cy="6" r="1"/></g></svg></div>
+                <span>More</span>
               </div>
             </div>
 
-            <div class="tabs"><div></div><div></div><div></div><div></div></div>
+            <div class="tiles">
+              <div class="tile">
+                <div class="cr" style="background:#FDEBD8"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="1.4" y="3" width="9.2" height="6" rx="1.4" stroke="#E08A3C" stroke-width="1.2"/><path d="M1.4 5.2h9.2" stroke="#E08A3C" stroke-width="1.2"/></svg></div>
+                <b>Card</b><span>Instant approval</span>
+              </div>
+              <div class="tile">
+                <div class="cr" style="background:#D9F2E4"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 8.6l2.6-2.8 2 1.8L10 3.4" stroke="#22A06B" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <b>Earn</b><span>Up to 30% APY</span>
+              </div>
+              <div class="tile">
+                <div class="cr" style="background:#DEE6FB"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="1.6" y="2" width="8.8" height="8" rx="1.4" stroke="#4B6BD6" stroke-width="1.2"/><path d="M4 6h4M6 4v4" stroke="#4B6BD6" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+                <b>Funding</b><span>Up to 10k USDT</span>
+              </div>
+            </div>
+
+            <div class="allrow"><b>All Assets</b><em>$0.00</em><span class="f"></span></div>
+
+            <div class="arow">
+              <div class="ic" style="background:#26A17B">₮</div>
+              <div class="nm">USDT<i>$1.00 &nbsp;0.00%</i></div>
+              <div class="vl">0.00<i>$0.00</i></div><span class="ar">›</span>
+            </div>
+            <div class="arow">
+              <div class="ic" style="background:#2775CA">$</div>
+              <div class="nm">USDC<i>$1.00 &nbsp;<span class="ch">-0.35%</span></i></div>
+              <div class="vl">0.00<i>$0.00</i></div><span class="ar">›</span>
+            </div>
+            <div class="arow">
+              <div class="ic" style="background:#111418">X</div>
+              <div class="nm">XBIT<i>$9.218 &nbsp;<span class="cg">+0.00%</span></i></div>
+              <div class="vl">0.00<i>$0.00</i></div><span class="ar">›</span>
+            </div>
+
+            <div class="tabbar">
+              <div class="tab on"><span class="d"></span>Asset</div>
+              <div class="tab"><span class="d"></span>Cards</div>
+              <div class="tab"><span class="d"></span>Profile</div>
+            </div>
+
           </div>
         </div>
 
-        <div class="badge badge-b">
-          <span>Card spend</span>
-          <b>2% back</b>
-        </div>
       </div>
     </div>
 
-    <!-- ================= STATS ================= -->
+    <!-- ================= STATS STRIP ================= -->
     <div class="stats">
       <div class="stat"><span>Operating</span><b>since 2018</b></div>
-      <div class="stat"><span>Personalized client care</span><b>24 / 7</b></div>
-      <div class="stat"><span>In assets under management</span><b>$7+ billion</b></div>
-      <div class="stat">
-        <span>Rated on Trustpilot</span>
-        <div class="stars">
-          <b>Excellent</b>
-          <svg width="74" height="14" viewBox="0 0 74 14" fill="none" aria-hidden="true">
-            <g fill="#2ED3B7">
-              <rect x="0"  width="13" height="13" rx="2"/><rect x="15" width="13" height="13" rx="2"/>
-              <rect x="30" width="13" height="13" rx="2"/><rect x="45" width="13" height="13" rx="2"/>
-              <rect x="60" width="13" height="13" rx="2"/>
-            </g>
-            <g fill="#04231F">
-              <path d="M6.5 2.6l1 2.4 2.4.2-1.8 1.6.6 2.4-2.2-1.3-2.2 1.3.6-2.4L3 5.2l2.5-.2z"/>
-              <path d="M21.5 2.6l1 2.4 2.4.2-1.8 1.6.6 2.4-2.2-1.3-2.2 1.3.6-2.4L18 5.2l2.5-.2z"/>
-              <path d="M36.5 2.6l1 2.4 2.4.2-1.8 1.6.6 2.4-2.2-1.3-2.2 1.3.6-2.4L33 5.2l2.5-.2z"/>
-              <path d="M51.5 2.6l1 2.4 2.4.2-1.8 1.6.6 2.4-2.2-1.3-2.2 1.3.6-2.4L48 5.2l2.5-.2z"/>
-              <path d="M66.5 2.6l1 2.4 2.4.2-1.8 1.6.6 2.4-2.2-1.3-2.2 1.3.6-2.4L63 5.2l2.5-.2z"/>
-            </g>
-          </svg>
-        </div>
+      <div class="stat"><span>Personalized</span><b>client care 24/7</b></div>
+      <div class="stat"><span>Trusted by</span><b>15,000 people</b></div>
+      <div class="tp">
+        <b>Excellent</b> 4.4 out of 5
+        <svg width="16" height="15" viewBox="0 0 16 15" aria-hidden="true">
+          <path d="M8 0l2 4.9 5.3.4-4 3.5 1.2 5.2L8 11.2 3.5 14l1.2-5.2-4-3.5 5.3-.4L8 0z" fill="#00B67A"/>
+        </svg>
+        <b>Trustpilot</b>
       </div>
     </div>
 
